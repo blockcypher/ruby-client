@@ -49,6 +49,16 @@ module BlockCypher
 
     end
 
+    context '#create_payments_forward' do
+
+      it 'creates a payment forward' do
+        forward_details = api.create_payments_forwarding(address_1, "foo")
+        expect(forward_details["input_address"]).to be_a(String)
+        expect(forward_details["input_address"].length).to be(34) # Ok this isn't strictly true but..
+      end
+
+    end
+
   end
 
 end
