@@ -49,12 +49,26 @@ module BlockCypher
 
     end
 
-    context '#create_payments_forward' do
+    context '#create_forwarding_address' do
 
       it 'creates a payment forward' do
-        forward_details = api.create_payments_forwarding(address_1, "foo")
+        forward_details = api.create_forwarding_address(address_1, "foo")
         expect(forward_details["input_address"]).to be_a(String)
         expect(forward_details["input_address"].length).to be(34) # Ok this isn't strictly true but..
+      end
+
+      it 'is possible to use the alias create_payments_forwarding' do
+        forward_details = api.create_payments_forwarding(address_1, "foo")
+        expect(forward_details["input_address"]).to be_a(String)
+      end
+
+    end
+
+    context '#list_forwarding_addresses' do
+
+      it 'lists all forwading addresses created for a given token' do
+        forwarding_addresses = api.list_forwarding_addresses("foo")
+        expect(forwarding_addresses.first["destination"]).to eql(address_1)
       end
 
     end
