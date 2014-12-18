@@ -120,11 +120,12 @@ module BlockCypher
     # Payments and Forwarding API
     ##################
 
-    def create_forwarding_address(destination, token, callback = nil)
+    def create_forwarding_address(destination, token, callback_url: nil, enable_confirmations: false)
       payload = {
         destination: destination,
-        callback_url: callback,
-        token: token
+        callback_url: callback_url,
+        token: token,
+        enable_confirmations: enable_confirmations
       }
       api_http_post('/payments', json_payload: payload)
     end
