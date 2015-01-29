@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://www.blockcypher.com'
 
   s.add_runtime_dependency "bitcoin-ruby", ["~> 0.0.5"]
+  s.add_runtime_dependency "rest_client", ["~> 1.7.2"]
   s.add_runtime_dependency "ffi"
   s.add_development_dependency "bundler", "~> 1.6"
   s.add_development_dependency "rake"
