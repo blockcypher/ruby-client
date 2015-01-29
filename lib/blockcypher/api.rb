@@ -131,7 +131,7 @@ module BlockCypher
 
     def api_http_call(http_method, api_path, json_payload: nil)
       uri = endpoint_uri(api_path)
-      RestClient::Request.execute :method => http_method, :url => uri, :payload => json_payload, :ssl_version => 'SSLv23'
+      JSON.load RestClient::Request.execute :method => http_method, :url => uri, :payload => json_payload, :ssl_version => 'SSLv23'
     end
 
     def api_http_get(api_path)
