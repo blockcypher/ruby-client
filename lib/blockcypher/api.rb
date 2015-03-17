@@ -15,10 +15,13 @@ module BlockCypher
 
     class Error < RuntimeError ; end
 
-    def initialize(version: V1, currency: BTC, network: MAIN_NET)
+    attr_reader :api_token
+
+    def initialize(version: V1, currency: BTC, network: MAIN_NET, api_token: nil)
       @version = version
       @currency = currency
       @network = network
+      @api_token = api_token
     end
 
     ##################
@@ -94,8 +97,8 @@ module BlockCypher
       api_http_post('/addrs')
     end
 
-    def address_details(address)
-      api_http_get('/addrs/' + address)
+    def address_details(address, unspent_only: false)
+      api_http_get('/addrs/' + address, query: { unspentOnly: unspent_only } )
     end
 
     def address_final_balance(address)
@@ -131,8 +134,8 @@ module BlockCypher
 
     private
 
-    def api_http_call(http_method, api_path, json_payload: nil)
-      uri = endpoint_uri(api_path)
+    def api_http_call(http_method, api_path, query, json_payload: nil)
+      uri = endpoint_uri(api_path, query)
 
       # Build the connection
       http    = Net::HTTP.new(uri.host, uri.port)
@@ -168,20 +171,22 @@ module BlockCypher
       end
     end
 
-    def api_http_get(api_path)
-      api_http_call :get, api_path
+    def api_http_get(api_path, query: {})
+      api_http_call(:get, api_path, query)
     end
 
-    def api_http_post(api_path, json_payload: nil)
-      api_http_call :post, api_path, json_payload: json_payload
+    def api_http_post(api_path, json_payload: nil, query: {})
+      api_http_call(:post, api_path, query, json_payload: json_payload)
     end
 
-    def endpoint_uri(api_path)
+    def endpoint_uri(api_path, query)
       if api_path[0] != '/'
-        api_path += '/' + api_path
+        api_path = "/#{api_path}"
       end
-      URI('https://api.blockcypher.com/' + @version + '/' + @currency + '/' + @network + api_path)
+      uri = URI("https://api.blockcypher.com/#{@version}/#{@currency}/#{@network}#{api_path}")
+      query[:token] = api_token if api_token
+      uri.query = URI.encode_www_form(query)
+      uri
     end
-
   end
 end

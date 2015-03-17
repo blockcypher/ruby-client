@@ -59,6 +59,19 @@ module BlockCypher
 
     end
 
+    describe '#endpoint_uri' do
+      it 'should encode query into URI' do
+        uri = api.send(:endpoint_uri, '/path', { test: 42 }).to_s
+        expect(uri).to match(/\?test=42/)
+      end
+
+      it 'should encode @api_token into URI if exists' do
+        allow(api).to receive(:api_token) { 'token' }
+        uri = api.send(:endpoint_uri, '/path', {}).to_s
+        expect(uri).to match(/\?token=token/)
+      end
+    end
+
   end
 
 end
