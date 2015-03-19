@@ -116,7 +116,7 @@ module BlockCypher
     # Events API
     ##################
 
-    def event_webhook_subscribe(url, event,
+    def event_webhook_subscribe(url, event, confirmations: nil,
                                 token:nil, hash:nil, address:nil, script:nil)
       payload = {
         url: url,
@@ -126,6 +126,7 @@ module BlockCypher
       payload[:address] = address if address
       payload[:hash] = hash if hash
       payload[:script] = script if script
+      payload[:confirmations] = confirmations if confirmations
       api_http_post('/hooks', json_payload: payload)
     end
 
@@ -195,7 +196,7 @@ module BlockCypher
       end
       uri = URI("https://api.blockcypher.com/#{@version}/#{@currency}/#{@network}#{api_path}")
       query[:token] = api_token if api_token
-      uri.query = URI.encode_www_form(query)
+      uri.query = URI.encode_www_form(query) unless query.empty?
       uri
     end
   end
