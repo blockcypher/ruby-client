@@ -116,12 +116,16 @@ module BlockCypher
     # Events API
     ##################
 
-    def event_webhook_subscribe(url, filter, token = nil)
+    def event_webhook_subscribe(url, event,
+                                token:nil, hash:nil, address:nil, script:nil)
       payload = {
         url: url,
-        filter: filter,
-        token: token
+        event: event,
       }
+      payload[:token] = token || @api_token if token || @api_token
+      payload[:address] = address if address
+      payload[:hash] = hash if hash
+      payload[:script] = script if script
       api_http_post('/hooks', json_payload: payload)
     end
 
