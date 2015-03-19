@@ -10,7 +10,7 @@ If you want to use BTC on the main net, which is normally what you want to do, i
 
 ## Setting up payment forwarding
 
-    BlockCypher::Api.new.create_payments_forwarding('your_forwarding_addresss', 'your_token')
+    BlockCypher::Api.new.create_forwarding_address('your_forwarding_address', 'your_token')
 
 ## BlockCypher's documentation
 
