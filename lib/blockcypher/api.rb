@@ -39,6 +39,12 @@ module BlockCypher
     ##################
     # Transaction API
     ##################
+    #
+    
+    def push_hex(hex)
+      payload = { 'tx' => hex }
+      api_http_post('/txs/push', json_payload: payload)
+    end
 
     def send_money(from_address, to_address, satoshi_amount, private_key)
 
