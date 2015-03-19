@@ -20,4 +20,4 @@ http://dev.blockcypher.com
 
 ## Contributors
 
-Contributions from [CoinHako](http://www.coinhako.com), [meXBT](https://mexbt.com) and [Volabit](https://www.volabit.com)
+Contributions from [CoinHako](http://www.coinhako.com) and [meXBT](https://mexbt.com)
