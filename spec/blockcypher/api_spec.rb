@@ -1,4 +1,5 @@
 require 'blockcypher'
+require 'pry'
 
 module BlockCypher
 
