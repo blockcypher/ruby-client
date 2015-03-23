@@ -112,6 +112,10 @@ module BlockCypher
       details['final_balance']
     end
 
+    def address_full_txs(address)
+      api_http_get("/addrs/#{address}/full")
+    end
+
     ##################
     # Events API
     ##################

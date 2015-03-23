@@ -81,6 +81,7 @@ module BlockCypher
 
       it 'lists all forwading addresses created for a given token' do
         forwarding_addresses = api.list_forwarding_addresses("foo")
+        binding.pry
         expect(forwarding_addresses.first["destination"]).to eql(address_1)
       end
 
