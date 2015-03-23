@@ -1,4 +1,5 @@
 require 'blockcypher'
+require 'pry'
 
 module BlockCypher
 
@@ -80,9 +81,23 @@ module BlockCypher
 
       it 'lists all forwading addresses created for a given token' do
         forwarding_addresses = api.list_forwarding_addresses("foo")
+        binding.pry
         expect(forwarding_addresses.first["destination"]).to eql(address_1)
       end
 
+    end
+
+    describe '#endpoint_uri' do
+      it 'should encode query into URI' do
+        uri = api.send(:endpoint_uri, '/path', { test: 42 }).to_s
+        expect(uri).to match(/\?test=42/)
+      end
+
+      it 'should encode @api_token into URI if exists' do
+        allow(api).to receive(:api_token) { 'token' }
+        uri = api.send(:endpoint_uri, '/path', {}).to_s
+        expect(uri).to match(/\?token=token/)
+      end
     end
 
   end
