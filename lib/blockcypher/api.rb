@@ -36,10 +36,13 @@ module BlockCypher
       api_http_get('/blocks/' + block_index)
     end
 
+		def blockchain()
+			api_http_get('')
+		end
+
     ##################
     # Transaction API
     ##################
-    #
     
     def push_hex(hex)
       payload = { 'tx' => hex }
@@ -202,9 +205,6 @@ module BlockCypher
     end
 
     def endpoint_uri(api_path, query)
-      if api_path[0] != '/'
-        api_path = "/#{api_path}"
-      end
       uri = URI("https://api.blockcypher.com/#{@version}/#{@currency}/#{@network}#{api_path}")
       query[:token] = api_token if api_token
       uri.query = URI.encode_www_form(query) unless query.empty?
