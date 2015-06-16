@@ -34,8 +34,8 @@ module BlockCypher
       api_http_get('/txs/' + transaction_hash)
     end
 
-    def blockchain_block(block_index)
-      api_http_get('/blocks/' + block_index)
+    def blockchain_block(block_index, params)
+      api_http_get('/blocks/' + block_index, query: params)
     end
 
 		def blockchain()
