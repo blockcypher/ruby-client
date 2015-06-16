@@ -6,6 +6,8 @@ module BlockCypher
 
   BTC = 'btc'
   LTC = 'ltc'
+	DOGE = 'doge'
+	BCY= 'bcy'
 
   MAIN_NET = 'main'
   TEST_NET = 'test'
@@ -38,6 +40,15 @@ module BlockCypher
 
 		def blockchain()
 			api_http_get('')
+		end
+
+		##################
+		# Faucet API
+		##################
+
+		def faucet(address, amount)
+			payload = { 'address' => address, 'amount' => amount }
+			api_http_post('/faucet', json_payload: payload)
 		end
 
     ##################
