@@ -121,8 +121,12 @@ module BlockCypher
       api_http_get('/addrs/' + address, query: { unspentOnly: unspent_only } )
     end
 
+		def address_balance(address)
+			api_http_get('/addrs/' + address + '/balance')
+		end
+
     def address_final_balance(address)
-      details = address_details(address)
+      details = address_balance(address)
       details['final_balance']
     end
 
