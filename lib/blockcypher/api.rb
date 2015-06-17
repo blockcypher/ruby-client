@@ -117,6 +117,11 @@ module BlockCypher
       api_http_post('/addrs')
     end
 
+		def address_generate_multi(pubkeys, script_type)
+			payload = { 'pubkeys' => pubkeys, 'script_type' => script_type}
+      api_http_post('/addrs', json_payload: payload)
+		end
+
     def address_details(address, unspent_only: false)
       api_http_get('/addrs/' + address, query: { unspentOnly: unspent_only } )
     end
