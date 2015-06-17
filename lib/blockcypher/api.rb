@@ -30,6 +30,10 @@ module BlockCypher
     # Blockchain API
     ##################
 
+		def blockchain_unconfirmed_tx()
+			api_http_get('/txs')
+		end
+
     def blockchain_transaction(transaction_hash)
       api_http_get('/txs/' + transaction_hash)
     end
@@ -55,6 +59,11 @@ module BlockCypher
     # Transaction API
     ##################
     
+		def decode_hex(hex)
+			payload = { 'tx' => hex}
+			api_http_post('/txs/decode', json_payload: payload)
+		end
+
     def push_hex(hex)
       payload = { 'tx' => hex }
       api_http_post('/txs/push', json_payload: payload)
@@ -108,6 +117,17 @@ module BlockCypher
 
       res
     end
+
+		def transaction_new_custom(payload)
+			# Build payload yourself, for custom transactions
+			api_http_post('/txs/new', json_payload: payload)
+		end
+
+		def transaction_send_custom(payload)
+			# Send TXSkeleton payload yourself, for custom transactions
+			# You may need to sign your data using another library, like Bitcoin
+			api_http_post('/txs/send', json_payload: payload)
+		end
 
     ##################
     # Address APIs
