@@ -98,25 +98,32 @@ module BlockCypher
     end
 
     def transaction_sign_and_send(new_tx, private_key)
-      key = Bitcoin::Key.new(private_key, nil, compressed = true)
-      public_key = key.pub
-      signatures = []
-      public_keys = []
+			pubkey = pubkey_from_priv(private_key)
+			# Make array of pubkeys matching length of 'tosign'
+			new_tx['pubkeys'] = Array.new(new_tx['tosign'].length) { pubkey }
+			# Sign the 'tosign' array
+      new_tx['signatures'] = signer(private_key, new_tx['tosign'])
+      api_http_post('/txs/send', json_payload: new_tx)
+    end
 
-      new_tx['tosign'].each do |to_sign_hex|
-        public_keys << public_key
+		def pubkey_from_priv(private_key)
+      key = Bitcoin::Key.new(private_key, nil, compressed = true)
+      key.pub
+		end
+
+		def signer(private_key, tosign)
+      key = Bitcoin::Key.new(private_key, nil, compressed = true)
+      signatures = []
+
+			tosign.each do |to_sign_hex|
         to_sign_binary = [to_sign_hex].pack("H*")
         sig_binary = key.sign(to_sign_binary)
         sig_hex = sig_binary.unpack("H*").first
         signatures << sig_hex
-      end
-      new_tx['signatures'] = signatures
-      new_tx['pubkeys'] = public_keys
+			end
 
-      res = api_http_post('/txs/send', json_payload: new_tx)
-
-      res
-    end
+			return signatures
+		end
 
 		def transaction_new_custom(payload)
 			# Build payload yourself, for custom transactions
@@ -127,6 +134,33 @@ module BlockCypher
 			# Send TXSkeleton payload yourself, for custom transactions
 			# You may need to sign your data using another library, like Bitcoin
 			api_http_post('/txs/send', json_payload: payload)
+		end
+
+		##################
+		# Microtx API
+		##################	
+		
+		# This method sends private key to server
+		def microtx_from_priv(private_key, to_address, value_satoshis)
+			payload = {
+				from_private: private_key,
+				to_address: to_address,
+				value_satoshis: value_satoshis
+			}
+			api_http_post('/txs/micro', json_payload: payload)
+		end
+
+		# This method uses public key, signs with private key locally
+		def microtx_from_pub(private_key, to_address, value_satoshis)
+			pubkey = pubkey_from_priv(private_key)
+			payload = {
+				from_pubkey: pubkey,
+				to_address: to_address,
+				value_satoshis: value_satoshis
+			}
+			micro_skel = api_http_post('/txs/micro', json_payload: payload)
+			micro_skel['signatures'] = signer(private_key, micro_skel['tosign'])
+			api_http_post('/txs/micro', json_payload: micro_skel)
 		end
 
     ##################
