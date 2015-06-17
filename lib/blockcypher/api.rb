@@ -139,6 +139,41 @@ module BlockCypher
       api_http_get("/addrs/#{address}/full")
     end
 
+		##################
+		# Wallet API
+		##################
+		
+		def wallet_create(name, addresses)
+			payload = { 'name' => name, 'addresses' => addresses}
+      api_http_post('/wallets', json_payload: payload)
+		end
+
+		def wallet_get(name)
+			api_http_get('/wallets/' + name)
+		end
+
+		def wallet_add_addr(name, addresses)
+			payload = { 'addresses' => addresses}
+      api_http_post('/wallets/' + name + '/addresses', json_payload: payload)
+		end
+
+		def wallet_get_addr(name)
+			api_http_get('/wallets/' + name + '/addresses')
+		end
+
+		def wallet_delete_addr(name, addresses)
+			addrjoin = addresses.join(";")
+			api_http_delete('/wallets/' + name + '/addresses', query: { address: addrjoin})
+		end
+
+		def wallet_gen_addr(name)
+			api_http_post('/wallets/' + name + '/addresses/generate')
+		end
+
+		def wallet_delete(name)
+			api_http_delete('/wallets/' + name)
+		end
+
     ##################
     # Events API
     ##################
@@ -191,6 +226,8 @@ module BlockCypher
         request = Net::HTTP::Post.new(uri.request_uri)
       elsif http_method == :get
         request = Net::HTTP::Get.new(uri.request_uri)
+			elsif http_method == :delete
+				request = Net::HTTP::Delete.new(uri.request_uri)
       else
         raise 'Invalid HTTP method'
       end
@@ -223,6 +260,10 @@ module BlockCypher
     def api_http_post(api_path, json_payload: nil, query: {})
       api_http_call(:post, api_path, query, json_payload: json_payload)
     end
+
+		def api_http_delete(api_path, query: {})
+			api_http_call(:delete, api_path, query)
+		end
 
     def endpoint_uri(api_path, query)
       uri = URI("https://api.blockcypher.com/#{@version}/#{@currency}/#{@network}#{api_path}")
