@@ -30,7 +30,7 @@ module BlockCypher
     # Blockchain API
     ##################
 
-		def blockchain_unconfirmed_tx()
+		def blockchain_unconfirmed_tx
 			api_http_get('/txs')
 		end
 
@@ -42,7 +42,7 @@ module BlockCypher
       api_http_get('/blocks/' + block_index, query: params)
     end
 
-		def blockchain()
+		def blockchain
 			api_http_get('')
 		end
 
@@ -254,11 +254,10 @@ module BlockCypher
     # Payments and Forwarding API
     ##################
 
-    def create_forwarding_address(destination, token, callback_url: nil, enable_confirmations: false)
+    def create_forwarding_address(destination, callback_url: nil, enable_confirmations: false)
       payload = {
         destination: destination,
         callback_url: callback_url,
-        token: token,
         enable_confirmations: enable_confirmations
       }
       api_http_post('/payments', json_payload: payload)
@@ -266,9 +265,13 @@ module BlockCypher
 
     alias :create_payments_forwarding :create_forwarding_address
 
-    def list_forwarding_addresses(token)
-      api_http_get("/payments?token=#{token}")
+    def list_forwarding_addresses
+      api_http_get("/payments")
     end
+
+		def delete_forwarding_address(id)
+			api_http_delete("/payments/" + id)
+		end
 
     private
 
