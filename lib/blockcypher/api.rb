@@ -136,6 +136,10 @@ module BlockCypher
 			api_http_post('/txs/send', json_payload: payload)
 		end
 
+		def tx_confidence(tx_hash)
+			api_http_get('/txs/' + tx_hash + '/confidence')
+		end
+
 		##################
 		# Microtx API
 		##################	
