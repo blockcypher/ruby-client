@@ -239,9 +239,11 @@ module BlockCypher
 
       response = http.request(request)
 
-      # Detect errors
+      # Detect errors/return 204 empty body
       if response.code == '400'
         raise Error.new(uri.to_s + ' Response:' + response.body)
+			elsif response.code == '204'
+				return nil
       end
 
       # Process the response
