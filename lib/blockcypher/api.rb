@@ -1,13 +1,11 @@
-
-
 module BlockCypher
 
   V1 = 'v1'
 
   BTC = 'btc'
   LTC = 'ltc'
-	DOGE = 'doge'
-	BCY= 'bcy'
+  DOGE = 'doge'
+  BCY= 'bcy'
 
   MAIN_NET = 'main'
   TEST_NET = 'test'
@@ -30,9 +28,9 @@ module BlockCypher
     # Blockchain API
     ##################
 
-		def blockchain_unconfirmed_tx
-			api_http_get('/txs')
-		end
+    def blockchain_unconfirmed_tx
+      api_http_get('/txs')
+    end
 
     def blockchain_transaction(transaction_hash)
       api_http_get('/txs/' + transaction_hash)
@@ -42,27 +40,27 @@ module BlockCypher
       api_http_get('/blocks/' + block_index, query: params)
     end
 
-		def blockchain
-			api_http_get('')
-		end
+    def blockchain
+      api_http_get('')
+    end
 
-		##################
-		# Faucet API
-		##################
+    ##################
+    # Faucet API
+    ##################
 
-		def faucet(address, amount)
-			payload = { 'address' => address, 'amount' => amount }
-			api_http_post('/faucet', json_payload: payload)
-		end
+    def faucet(address, amount)
+      payload = { 'address' => address, 'amount' => amount }
+      api_http_post('/faucet', json_payload: payload)
+    end
 
     ##################
     # Transaction API
     ##################
     
-		def decode_hex(hex)
-			payload = { 'tx' => hex}
-			api_http_post('/txs/decode', json_payload: payload)
-		end
+    def decode_hex(hex)
+      payload = { 'tx' => hex}
+      api_http_post('/txs/decode', json_payload: payload)
+    end
 
     def push_hex(hex)
       payload = { 'tx' => hex }
@@ -98,74 +96,74 @@ module BlockCypher
     end
 
     def transaction_sign_and_send(new_tx, private_key)
-			pubkey = pubkey_from_priv(private_key)
-			# Make array of pubkeys matching length of 'tosign'
-			new_tx['pubkeys'] = Array.new(new_tx['tosign'].length) { pubkey }
-			# Sign the 'tosign' array
+      pubkey = pubkey_from_priv(private_key)
+      # Make array of pubkeys matching length of 'tosign'
+      new_tx['pubkeys'] = Array.new(new_tx['tosign'].length) { pubkey }
+      # Sign the 'tosign' array
       new_tx['signatures'] = signer(private_key, new_tx['tosign'])
       api_http_post('/txs/send', json_payload: new_tx)
     end
 
-		def pubkey_from_priv(private_key)
+    def pubkey_from_priv(private_key)
       key = Bitcoin::Key.new(private_key, nil, compressed = true)
       key.pub
-		end
+    end
 
-		def signer(private_key, tosign)
+    def signer(private_key, tosign)
       key = Bitcoin::Key.new(private_key, nil, compressed = true)
       signatures = []
 
-			tosign.each do |to_sign_hex|
+      tosign.each do |to_sign_hex|
         to_sign_binary = [to_sign_hex].pack("H*")
         sig_binary = key.sign(to_sign_binary)
         sig_hex = sig_binary.unpack("H*").first
         signatures << sig_hex
-			end
+      end
 
-			return signatures
-		end
+      return signatures
+    end
 
-		def transaction_new_custom(payload)
-			# Build payload yourself, for custom transactions
-			api_http_post('/txs/new', json_payload: payload)
-		end
+    def transaction_new_custom(payload)
+      # Build payload yourself, for custom transactions
+      api_http_post('/txs/new', json_payload: payload)
+    end
 
-		def transaction_send_custom(payload)
-			# Send TXSkeleton payload yourself, for custom transactions
-			# You may need to sign your data using another library, like Bitcoin
-			api_http_post('/txs/send', json_payload: payload)
-		end
+    def transaction_send_custom(payload)
+      # Send TXSkeleton payload yourself, for custom transactions
+      # You may need to sign your data using another library, like Bitcoin
+      api_http_post('/txs/send', json_payload: payload)
+    end
 
-		def tx_confidence(tx_hash)
-			api_http_get('/txs/' + tx_hash + '/confidence')
-		end
+    def tx_confidence(tx_hash)
+      api_http_get('/txs/' + tx_hash + '/confidence')
+    end
 
-		##################
-		# Microtx API
-		##################	
-		
-		# This method sends private key to server
-		def microtx_from_priv(private_key, to_address, value_satoshis)
-			payload = {
-				from_private: private_key,
-				to_address: to_address,
-				value_satoshis: value_satoshis
-			}
-			api_http_post('/txs/micro', json_payload: payload)
-		end
+    ##################
+    # Microtx API
+    ##################  
+    
+    # This method sends private key to server
+    def microtx_from_priv(private_key, to_address, value_satoshis)
+      payload = {
+        from_private: private_key,
+        to_address: to_address,
+        value_satoshis: value_satoshis
+      }
+      api_http_post('/txs/micro', json_payload: payload)
+    end
 
-		# This method uses public key, signs with private key locally
-		def microtx_from_pub(private_key, to_address, value_satoshis)
-			pubkey = pubkey_from_priv(private_key)
-			payload = {
-				from_pubkey: pubkey,
-				to_address: to_address,
-				value_satoshis: value_satoshis
-			}
-			micro_skel = api_http_post('/txs/micro', json_payload: payload)
-			micro_skel['signatures'] = signer(private_key, micro_skel['tosign'])
-			api_http_post('/txs/micro', json_payload: micro_skel)
-		end
+    # This method uses public key, signs with private key locally
+    def microtx_from_pub(private_key, to_address, value_satoshis)
+      pubkey = pubkey_from_priv(private_key)
+      payload = {
+        from_pubkey: pubkey,
+        to_address: to_address,
+        value_satoshis: value_satoshis
+      }
+      micro_skel = api_http_post('/txs/micro', json_payload: payload)
+      micro_skel['signatures'] = signer(private_key, micro_skel['tosign'])
+      api_http_post('/txs/micro', json_payload: micro_skel)
+    end
 
     ##################
     # Address APIs
@@ -175,18 +173,18 @@ module BlockCypher
       api_http_post('/addrs')
     end
 
-		def address_generate_multi(pubkeys, script_type)
-			payload = { 'pubkeys' => pubkeys, 'script_type' => script_type}
+    def address_generate_multi(pubkeys, script_type)
+      payload = { 'pubkeys' => pubkeys, 'script_type' => script_type}
       api_http_post('/addrs', json_payload: payload)
-		end
+    end
 
     def address_details(address, unspent_only: false)
       api_http_get('/addrs/' + address, query: { unspentOnly: unspent_only } )
     end
 
-		def address_balance(address)
-			api_http_get('/addrs/' + address + '/balance')
-		end
+    def address_balance(address)
+      api_http_get('/addrs/' + address + '/balance')
+    end
 
     def address_final_balance(address)
       details = address_balance(address)
@@ -197,40 +195,40 @@ module BlockCypher
       api_http_get("/addrs/#{address}/full")
     end
 
-		##################
-		# Wallet API
-		##################
-		
-		def wallet_create(name, addresses)
-			payload = { 'name' => name, 'addresses' => addresses}
+    ##################
+    # Wallet API
+    ##################
+    
+    def wallet_create(name, addresses)
+      payload = { 'name' => name, 'addresses' => addresses}
       api_http_post('/wallets', json_payload: payload)
-		end
+    end
 
-		def wallet_get(name)
-			api_http_get('/wallets/' + name)
-		end
+    def wallet_get(name)
+      api_http_get('/wallets/' + name)
+    end
 
-		def wallet_add_addr(name, addresses)
-			payload = { 'addresses' => addresses}
+    def wallet_add_addr(name, addresses)
+      payload = { 'addresses' => addresses}
       api_http_post('/wallets/' + name + '/addresses', json_payload: payload)
-		end
+    end
 
-		def wallet_get_addr(name)
-			api_http_get('/wallets/' + name + '/addresses')
-		end
+    def wallet_get_addr(name)
+      api_http_get('/wallets/' + name + '/addresses')
+    end
 
-		def wallet_delete_addr(name, addresses)
-			addrjoin = addresses.join(";")
-			api_http_delete('/wallets/' + name + '/addresses', query: { address: addrjoin})
-		end
+    def wallet_delete_addr(name, addresses)
+      addrjoin = addresses.join(";")
+      api_http_delete('/wallets/' + name + '/addresses', query: { address: addrjoin})
+    end
 
-		def wallet_gen_addr(name)
-			api_http_post('/wallets/' + name + '/addresses/generate')
-		end
+    def wallet_gen_addr(name)
+      api_http_post('/wallets/' + name + '/addresses/generate')
+    end
 
-		def wallet_delete(name)
-			api_http_delete('/wallets/' + name)
-		end
+    def wallet_delete(name)
+      api_http_delete('/wallets/' + name)
+    end
 
     ##################
     # Events API
@@ -248,17 +246,17 @@ module BlockCypher
       api_http_post('/hooks', json_payload: payload)
     end
 
-		def event_webhook_listall
-			api_http_get('/hooks')
-		end
+    def event_webhook_listall
+      api_http_get('/hooks')
+    end
 
-		def event_webhook_get(id)
-			api_http_get('/hooks/' + id)
-		end
+    def event_webhook_get(id)
+      api_http_get('/hooks/' + id)
+    end
 
-		def event_webhook_delete(id)
-			api_http_delete('/hooks/' + id)
-		end
+    def event_webhook_delete(id)
+      api_http_delete('/hooks/' + id)
+    end
 
     ##################
     # Payments and Forwarding API
@@ -279,9 +277,9 @@ module BlockCypher
       api_http_get("/payments")
     end
 
-		def delete_forwarding_address(id)
-			api_http_delete("/payments/" + id)
-		end
+    def delete_forwarding_address(id)
+      api_http_delete("/payments/" + id)
+    end
 
     private
 
@@ -297,8 +295,8 @@ module BlockCypher
         request = Net::HTTP::Post.new(uri.request_uri)
       elsif http_method == :get
         request = Net::HTTP::Get.new(uri.request_uri)
-			elsif http_method == :delete
-				request = Net::HTTP::Delete.new(uri.request_uri)
+      elsif http_method == :delete
+        request = Net::HTTP::Delete.new(uri.request_uri)
       else
         raise 'Invalid HTTP method'
       end
@@ -313,8 +311,8 @@ module BlockCypher
       # Detect errors/return 204 empty body
       if response.code == '400'
         raise Error.new(uri.to_s + ' Response:' + response.body)
-			elsif response.code == '204'
-				return nil
+      elsif response.code == '204'
+        return nil
       end
 
       # Process the response
@@ -334,9 +332,9 @@ module BlockCypher
       api_http_call(:post, api_path, query, json_payload: json_payload)
     end
 
-		def api_http_delete(api_path, query: {})
-			api_http_call(:delete, api_path, query)
-		end
+    def api_http_delete(api_path, query: {})
+      api_http_call(:delete, api_path, query)
+    end
 
     def endpoint_uri(api_path, query)
       uri = URI("https://api.blockcypher.com/#{@version}/#{@currency}/#{@network}#{api_path}")
