@@ -90,9 +90,35 @@ module BlockCypher
       new_tx['signatures'] = signatures
       new_tx['pubkeys'] = public_keys
 
-      res = api_http_post('/txs/send', json_payload: new_tx)
+      api_http_post('/txs/send', json_payload: new_tx)
+    end
 
-      res
+    ##################
+    # Wallet APIs
+    ##################
+
+    def create_wallet(name:, addresses:, api_token: @api_token)
+      raise 'You must set an API_TOKEN for wallet calls!' unless api_token
+      payload = {
+        name: name,
+        addresses: Array(addresses),
+        token: api_token
+      }
+      api_http_post('/wallets', json_payload: payload)
+    end
+
+    def add_to_wallet(name:, addresses:, api_token: @api_token)
+      raise 'You must set an API_TOKEN for wallet calls!' unless api_token
+      payload = {
+        addresses: Array(addresses),
+        token: api_token
+      }
+      api_http_post("/wallets/#{name}/addresses", json_payload: payload)
+    end
+
+    def get_wallet(name)
+      raise 'You must set the @api_token param in the initializer for this call.' unless @api_token
+      api_http_get("/wallets/#{name}")
     end
 
     ##################
