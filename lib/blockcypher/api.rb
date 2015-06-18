@@ -236,19 +236,29 @@ module BlockCypher
     # Events API
     ##################
 
-    def event_webhook_subscribe(url, event, confirmations: nil,
-                                token:nil, hash:nil, address:nil, script:nil)
+    def event_webhook_subscribe(url, event, confirmations: nil, hash:nil, address:nil, script:nil)
       payload = {
         url: url,
         event: event,
       }
-      payload[:token] = token || @api_token if token || @api_token
       payload[:address] = address if address
       payload[:hash] = hash if hash
       payload[:script] = script if script
       payload[:confirmations] = confirmations if confirmations
       api_http_post('/hooks', json_payload: payload)
     end
+
+		def event_webhook_listall
+			api_http_get('/hooks')
+		end
+
+		def event_webhook_get(id)
+			api_http_get('/hooks/' + id)
+		end
+
+		def event_webhook_delete(id)
+			api_http_delete('/hooks/' + id)
+		end
 
     ##################
     # Payments and Forwarding API
