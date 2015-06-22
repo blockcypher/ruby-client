@@ -142,8 +142,8 @@ module BlockCypher
 
     alias_method :wallet_final_balance, :address_final_balance
 
-    def address_full_txs(address)
-      api_http_get("/addrs/#{address}/full")
+    def address_full_txs(address, limit: 10)
+      api_http_get("/addrs/#{address}/full", query: { limit: limit })
     end
 
     alias_method :wallet_full_txs, :address_full_txs
