@@ -133,14 +133,20 @@ module BlockCypher
       api_http_get('/addrs/' + address, query: { unspentOnly: unspent_only } )
     end
 
+    alias_method :wallet_details, :address_details
+
     def address_final_balance(address)
       details = address_details(address)
       details['final_balance']
     end
 
+    alias_method :wallet_final_balance, :address_final_balance
+
     def address_full_txs(address)
       api_http_get("/addrs/#{address}/full")
     end
+
+    alias_method :wallet_full_txs, :address_full_txs
 
     ##################
     # Events API
