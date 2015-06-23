@@ -2,6 +2,12 @@
 
 Simple Ruby client for the [BlockCypher](http://www.blockcypher.com) API.
 
+## Setup
+
+Simply using rubygems:
+
+  gem install blockcypher-ruby
+
 ## Initializing a client
 
 If you want to use BTC on the main net, which is normally what you want to do, it's as simple as:
