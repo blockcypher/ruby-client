@@ -6,7 +6,7 @@ Simple Ruby client for the [BlockCypher](http://www.blockcypher.com) API.
 
 Simply using rubygems:
 
-  gem install blockcypher-ruby
+    gem install blockcypher-ruby
 
 ## Initializing a client
 
