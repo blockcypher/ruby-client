@@ -191,8 +191,8 @@ module BlockCypher
       details['final_balance']
     end
 
-    def address_full_txs(address)
-      api_http_get("/addrs/#{address}/full")
+    def address_full_txs(address, limit: 10)
+      api_http_get("/addrs/#{address}/full", query: { limit: limit })
     end
 
     ##################
@@ -200,7 +200,7 @@ module BlockCypher
     ##################
     
     def wallet_create(name, addresses)
-      payload = { 'name' => name, 'addresses' => addresses}
+      payload = { 'name' => name, 'addresses' => Array(addresses)}
       api_http_post('/wallets', json_payload: payload)
     end
 
@@ -209,7 +209,7 @@ module BlockCypher
     end
 
     def wallet_add_addr(name, addresses)
-      payload = { 'addresses' => addresses}
+      payload = { 'addresses' => Array(addresses)}
       api_http_post('/wallets/' + name + '/addresses', json_payload: payload)
     end
 
