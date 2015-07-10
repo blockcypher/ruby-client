@@ -49,14 +49,53 @@ module BlockCypher
 
     end
 
-    context '#create_payments_forward' do
+    context '#create_forwarding_address' do
 
       it 'creates a payment forward' do
-        forward_details = api.create_payments_forwarding(address_1, "foo")
+        forward_details = api.create_forwarding_address(address_1, "foo")
         expect(forward_details["input_address"]).to be_a(String)
         expect(forward_details["input_address"].length).to be(34) # Ok this isn't strictly true but..
       end
 
+      it 'allows creating a payment forward with a callback' do
+        forward_details = api.create_forwarding_address(address_1, "foo", callback_url: "http://test.com/foo")
+        expect(forward_details["callback_url"]).to eql("http://test.com/foo")
+        expect(forward_details["enable_confirmations"]).to be nil
+      end
+
+      it 'allows creating a payment forward with a callback and confirmation notifications enabled' do
+        forward_details = api.create_forwarding_address(address_1, "foo", callback_url: "http://test.com/foo", enable_confirmations: true)
+        expect(forward_details["callback_url"]).to eql("http://test.com/foo")
+        expect(forward_details["enable_confirmations"]).to be true
+      end
+
+      it 'is possible to use the alias create_payments_forwarding' do
+        forward_details = api.create_payments_forwarding(address_1, "foo")
+        expect(forward_details["input_address"]).to be_a(String)
+      end
+
+    end
+
+    context '#list_forwarding_addresses' do
+
+      it 'lists all forwading addresses created for a given token' do
+        forwarding_addresses = api.list_forwarding_addresses("foo")
+        expect(forwarding_addresses.first["destination"]).to eql(address_1)
+      end
+
+    end
+
+    describe '#endpoint_uri' do
+      it 'should encode query into URI' do
+        uri = api.send(:endpoint_uri, '/path', { test: 42 }).to_s
+        expect(uri).to match(/\?test=42/)
+      end
+
+      it 'should encode @api_token into URI if exists' do
+        allow(api).to receive(:api_token) { 'token' }
+        uri = api.send(:endpoint_uri, '/path', {}).to_s
+        expect(uri).to match(/\?token=token/)
+      end
     end
 
   end
