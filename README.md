@@ -8,6 +8,30 @@ Simply using rubygems:
 
     gem install blockcypher-ruby
 
+### For Rails apps
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'blockcypher-ruby', '~> 0.2.0', :require => 'blockcypher'
+```
+
+And then execute:
+
+```bash
+$ bundle install
+```
+
+Or install it yourself as:
+
+```bash
+$ git clone https://github.com/coincovemx/ruby-api-client.git
+$ cd ruby-api-client
+$ bundle
+$ gem build volabit.gemspec
+$ gem install volabit-[version].gem
+```
+
 ## Initializing a client
 
 If you want to use BTC on the main net, which is normally what you want to do, it's as simple as:
