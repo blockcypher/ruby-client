@@ -25,11 +25,11 @@ $ bundle install
 Or install it yourself as:
 
 ```bash
-$ git clone https://github.com/coincovemx/ruby-api-client.git
-$ cd ruby-api-client
+$ git clone https://github.com/blockcypher/ruby-client.git
+$ cd ruby-client
 $ bundle
-$ gem build volabit.gemspec
-$ gem install volabit-[version].gem
+$ gem build blockcypher-ruby.gemspec
+$ gem install blockcypher-ruby-0.2.0.gem
 ```
 
 ## Initializing a client
