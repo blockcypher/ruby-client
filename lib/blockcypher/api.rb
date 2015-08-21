@@ -56,7 +56,7 @@ module BlockCypher
     ##################
     # Transaction API
     ##################
-    
+
     def decode_hex(hex)
       payload = { 'tx' => hex}
       api_http_post('/txs/decode', json_payload: payload)
@@ -140,8 +140,8 @@ module BlockCypher
 
     ##################
     # Microtx API
-    ##################  
-    
+    ##################
+
     # This method sends private key to server
     def microtx_from_priv(private_key, to_address, value_satoshis)
       payload = {
@@ -178,8 +178,9 @@ module BlockCypher
       api_http_post('/addrs', json_payload: payload)
     end
 
-    def address_details(address, unspent_only: false)
-      api_http_get('/addrs/' + address, query: { unspentOnly: unspent_only } )
+    def address_details(address, unspent_only: false, limit: 50)
+      api_http_get('/addrs/' + address, query: { unspentOnly: unspent_only,
+                                                 limit: limit } )
     end
 
     def address_balance(address)
@@ -198,7 +199,7 @@ module BlockCypher
     ##################
     # Wallet API
     ##################
-    
+
     def wallet_create(name, addresses)
       payload = { 'name' => name, 'addresses' => Array(addresses)}
       api_http_post('/wallets', json_payload: payload)
