@@ -178,9 +178,14 @@ module BlockCypher
       api_http_post('/addrs', json_payload: payload)
     end
 
-    def address_details(address, unspent_only: false, limit: 50)
-      api_http_get('/addrs/' + address, query: { unspentOnly: unspent_only,
-                                                 limit: limit } )
+    def address_details(address, unspent_only: false, limit: 50, before: nil)
+      query = {
+        unspentOnly: unspent_only,
+        limit: limit
+      }
+      query[:before] = before if before
+
+      api_http_get('/addrs/' + address, query: query )
     end
 
     def address_balance(address)
@@ -192,8 +197,11 @@ module BlockCypher
       details['final_balance']
     end
 
-    def address_full_txs(address, limit: 10)
-      api_http_get("/addrs/#{address}/full", query: { limit: limit })
+    def address_full_txs(address, limit: 10, before: nil)
+      query = { limit: limit }
+      query[:before] = before if before
+
+      api_http_get("/addrs/#{address}/full", query: query)
     end
 
     ##################
