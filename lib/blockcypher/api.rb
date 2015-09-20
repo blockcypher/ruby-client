@@ -32,8 +32,8 @@ module BlockCypher
       api_http_get('/txs')
     end
 
-    def blockchain_transaction(transaction_hash)
-      api_http_get('/txs/' + transaction_hash)
+    def blockchain_transaction(transaction_hash, **params)
+      api_http_get('/txs/' + transaction_hash, query: params)
     end
 
     def blockchain_block(block_index, params)
@@ -178,10 +178,12 @@ module BlockCypher
       api_http_post('/addrs', json_payload: payload)
     end
 
-    def address_details(address, unspent_only: false, limit: 50, before: nil)
+    def address_details(address, unspent_only: false, limit: 50,
+                        before: nil, omit_wallet_addresses: false)
       query = {
         unspentOnly: unspent_only,
-        limit: limit
+        limit: limit,
+        omitWalletAddresses: omit_wallet_addresses
       }
       query[:before] = before if before
 
