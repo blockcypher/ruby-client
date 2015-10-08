@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    blockcypher-ruby (0.1.0)
+    blockcypher-ruby (0.2.3)
       bitcoin-ruby (~> 0.0.5)
       ffi
 
