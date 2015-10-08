@@ -190,17 +190,24 @@ module BlockCypher
       api_http_get('/addrs/' + address, query: query )
     end
 
-    def address_balance(address)
-      api_http_get('/addrs/' + address + '/balance')
+    def address_balance(address, omit_wallet_addresses: false)
+      query = { omitWalletAddresses: omit_wallet_addresses }
+      api_http_get('/addrs/' + address + '/balance', query: query)
     end
 
-    def address_final_balance(address)
-      details = address_balance(address)
+    def address_final_balance(address, omit_wallet_addresses: false)
+      details = address_balance(address,
+                                omit_wallet_addresses: omit_wallet_addresses)
       details['final_balance']
     end
 
-    def address_full_txs(address, limit: 10, before: nil)
-      query = { limit: limit }
+    def address_full_txs(address, limit: 10, before: nil, include_hex: false,
+                         omit_wallet_addresses: false)
+      query = {
+        limit: limit,
+        includeHex: include_hex,
+        omitWalletAddresses: omit_wallet_addresses
+      }
       query[:before] = before if before
 
       api_http_get("/addrs/#{address}/full", query: query)
@@ -219,9 +226,11 @@ module BlockCypher
       api_http_get('/wallets/' + name)
     end
 
-    def wallet_add_addr(name, addresses)
-      payload = { 'addresses' => Array(addresses)}
-      api_http_post('/wallets/' + name + '/addresses', json_payload: payload)
+    def wallet_add_addr(name, addresses, omit_wallet_addresses: false)
+      payload = { 'addresses' => Array(addresses) }
+      query = { omitWalletAddresses: omit_wallet_addresses }
+      api_http_post('/wallets/' + name + '/addresses',
+                    json_payload: payload, query: query)
     end
 
     def wallet_get_addr(name)
