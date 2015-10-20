@@ -23,7 +23,7 @@ module BlockCypher
       it 'should call the txs/new api' do
         input_addresses = [address_1]
         output_addresses = [address_2]
-        satoshi_value = 20000
+        satoshi_value = -20000
         res = api.transaction_new(input_addresses, output_addresses, satoshi_value)
         expect(res["tx"]["hash"]).to be_a(String)
         expect(res["tx"]["hash"].length).to be(64)
