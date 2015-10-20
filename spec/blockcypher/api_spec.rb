@@ -3,7 +3,14 @@ require 'blockcypher'
 module BlockCypher
 
   describe Api do
-    let(:api) { BlockCypher::Api.new(currency: BlockCypher::BTC, network: BlockCypher::TEST_NET_3, version: BlockCypher::V1) }
+    let(:api) do
+      BlockCypher::Api.new({
+        api_token: 'foo',
+        currency: BlockCypher::BTC,
+        network: BlockCypher::TEST_NET_3,
+        version: BlockCypher::V1
+      })
+    end
 
     let(:address_1) { 'miB9s4fcYCEBxPQm8vw6UrsYc2iSiEW3Yn' }
     let(:address_1_private_key) { 'f2a73451a726e81aec76a2bfd5a4393a89822b30cc4cddb2b4317efb2266ad47' }
@@ -52,25 +59,25 @@ module BlockCypher
     context '#create_forwarding_address' do
 
       it 'creates a payment forward' do
-        forward_details = api.create_forwarding_address(address_1, "foo")
+        forward_details = api.create_forwarding_address(address_1)
         expect(forward_details["input_address"]).to be_a(String)
         expect(forward_details["input_address"].length).to be(34) # Ok this isn't strictly true but..
       end
 
       it 'allows creating a payment forward with a callback' do
-        forward_details = api.create_forwarding_address(address_1, "foo", callback_url: "http://test.com/foo")
+        forward_details = api.create_forwarding_address(address_1, callback_url: "http://test.com/foo")
         expect(forward_details["callback_url"]).to eql("http://test.com/foo")
         expect(forward_details["enable_confirmations"]).to be nil
       end
 
       it 'allows creating a payment forward with a callback and confirmation notifications enabled' do
-        forward_details = api.create_forwarding_address(address_1, "foo", callback_url: "http://test.com/foo", enable_confirmations: true)
+        forward_details = api.create_forwarding_address(address_1, callback_url: "http://test.com/foo", enable_confirmations: true)
         expect(forward_details["callback_url"]).to eql("http://test.com/foo")
         expect(forward_details["enable_confirmations"]).to be true
       end
 
       it 'is possible to use the alias create_payments_forwarding' do
-        forward_details = api.create_payments_forwarding(address_1, "foo")
+        forward_details = api.create_payments_forwarding(address_1)
         expect(forward_details["input_address"]).to be_a(String)
       end
 
@@ -79,7 +86,7 @@ module BlockCypher
     context '#list_forwarding_addresses' do
 
       it 'lists all forwading addresses created for a given token' do
-        forwarding_addresses = api.list_forwarding_addresses("foo")
+        forwarding_addresses = api.list_forwarding_addresses
         expect(forwarding_addresses.first["destination"]).to eql(address_1)
       end
 
