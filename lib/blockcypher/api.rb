@@ -179,13 +179,16 @@ module BlockCypher
     end
 
     def address_details(address, unspent_only: false, limit: 50,
-                        before: nil, omit_wallet_addresses: false)
+                        before: nil, after: nil, confirmations: nil,
+												omit_wallet_addresses: false, include_confidence:false)
       query = {
         unspentOnly: unspent_only,
         limit: limit,
-        omitWalletAddresses: omit_wallet_addresses
+        omitWalletAddresses: omit_wallet_addresses,
+				includeConfidence: include_confidence
       }
       query[:before] = before if before
+			query[:after] = after if after
 
       api_http_get('/addrs/' + address, query: query )
     end
@@ -201,14 +204,16 @@ module BlockCypher
       details['final_balance']
     end
 
-    def address_full_txs(address, limit: 10, before: nil, include_hex: false,
-                         omit_wallet_addresses: false)
+    def address_full_txs(address, limit: 10, before: nil, after: nil, 
+												 include_hex: false, omit_wallet_addresses: false, include_confidence:false)
       query = {
         limit: limit,
         includeHex: include_hex,
-        omitWalletAddresses: omit_wallet_addresses
+        omitWalletAddresses: omit_wallet_addresses,
+				includeConfidence: include_confidence
       }
       query[:before] = before if before
+      query[:after] = after if after
 
       api_http_get("/addrs/#{address}/full", query: query)
     end
