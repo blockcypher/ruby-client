@@ -13,7 +13,7 @@ Simply using rubygems:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'blockcypher-ruby', '~> 0.2.4', :require => 'blockcypher'
+gem 'blockcypher-ruby', '~> 0.2.4'
 ```
 
 And then execute:
