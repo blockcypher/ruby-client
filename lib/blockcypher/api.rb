@@ -14,6 +14,9 @@ module BlockCypher
   class Api
 
     class Error < RuntimeError ; end
+    CREATE_FORWARDING_ADDRESS_OPTS = %i(process_fees_address process_fees_satoshis process_fees_percent callback_url
+                                        enable_confirmations mining_fees_satoshis).freeze
+    CREATE_FORWARDING_ADDRESS_DEFAULTS = { enable_confirmations: false }.freeze
 
     attr_reader :api_token
 
@@ -204,7 +207,7 @@ module BlockCypher
       details['final_balance']
     end
 
-    def address_full_txs(address, limit: 10, before: nil, after: nil, 
+    def address_full_txs(address, limit: 10, before: nil, after: nil,
 												 include_hex: false, omit_wallet_addresses: false, include_confidence:false)
       query = {
         limit: limit,
@@ -287,12 +290,9 @@ module BlockCypher
     # Payments and Forwarding API
     ##################
 
-    def create_forwarding_address(destination, callback_url: nil, enable_confirmations: false)
-      payload = {
-        destination: destination,
-        callback_url: callback_url,
-        enable_confirmations: enable_confirmations
-      }
+    def create_forwarding_address(destination, **options)
+      sliced_options = hash_slice(options, CREATE_FORWARDING_ADDRESS_OPTS)
+      payload = CREATE_FORWARDING_ADDRESS_DEFAULTS.merge(**sliced_options, destination: destination)
       api_http_post('/payments', json_payload: payload)
     end
 
@@ -307,6 +307,10 @@ module BlockCypher
     end
 
     private
+
+    def hash_slice(hash_obj, keys)
+      keys.each_with_object(Hash.new) { |k, hash| hash[k] = hash_obj[k] if hash_obj.has_key?(k) }
+    end
 
     def api_http_call(http_method, api_path, query, json_payload: nil)
       uri = endpoint_uri(api_path, query)
