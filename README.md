@@ -13,7 +13,7 @@ Simply using rubygems:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'blockcypher-ruby', '~> 0.2.4'
+gem 'blockcypher-ruby', '~> 0.2.5'
 ```
 
 And then execute:
@@ -29,7 +29,7 @@ $ git clone https://github.com/blockcypher/ruby-client.git
 $ cd ruby-client
 $ bundle
 $ gem build blockcypher-ruby.gemspec
-$ gem install blockcypher-ruby-0.2.4.gem
+$ gem install blockcypher-ruby-0.2.5.gem
 ```
 
 ## Initializing a client
