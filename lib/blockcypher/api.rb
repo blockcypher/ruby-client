@@ -204,7 +204,7 @@ module BlockCypher
       details['final_balance']
     end
 
-    def address_full_txs(address, limit: 10, before: nil, after: nil, 
+    def address_full_txs(address, limit: 10, before: nil, after: nil,
 												 include_hex: false, omit_wallet_addresses: false, include_confidence:false)
       query = {
         limit: limit,
@@ -304,6 +304,39 @@ module BlockCypher
 
     def delete_forwarding_address(id)
       api_http_delete("/payments/" + id)
+    end
+
+
+    #############
+    # Asset API #
+    #############
+
+    def generate_asset_address
+      api_http_post("/oap/addrs")
+    end
+
+    def issue_asset(from_private, to_address, amount)
+      api_http_post("/oap/issue", json_payload: {
+        from_private: from_private,
+        to_address: to_address,
+        amount: amount
+      })
+    end
+
+    def transfer_asset(asset_id, from_private, to_address, amount)
+      api_http_post("/oap/#{asset_id}/transfer", json_payload: {
+         from_private: from_private,
+         to_address: to_address,
+         amount: amount
+      })
+    end
+
+    def asset_txs(asset_id)
+      api_http_get("/oap/#{asset_id}/txs")
+    end
+
+    def asset_address(asset_id, oap_address)
+      api_http_get("/oap/#{asset_id}/addrs/#{oap_address}")
     end
 
     private

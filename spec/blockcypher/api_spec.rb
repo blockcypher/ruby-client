@@ -122,6 +122,51 @@ module BlockCypher
       end
     end
 
-  end
+    describe "Asset API" do
+      describe "Generate Asset Address" do
+        it "should include private, public, oap_address, original_address hashes" do
+          res = api.generate_asset_address
+          expect(res).to include("private", "public", "oap_address", "original_address")
+        end
+      end
 
+      describe "Issue Asset" do
+        it "should issue asset" do
+          asset_address = api.generate_asset_address
+          api.faucet(asset_address["original_address"], 1000000)
+          res = api.issue_asset(asset_address["private"], asset_address["oap_address"], 1000)
+
+          expect(res).to include(
+            "ver",
+            "assetid",
+            "oap_meta",
+            "hash",
+            "received",
+            "double_spend",
+            "inputs",
+            "outputs"
+          )
+        end
+      end
+
+      describe "Asset Transfer" do
+        it "should transfer asset" do
+          asset_address = api.generate_asset_address
+          asset_address_to = api.generate_asset_address
+          api.faucet(asset_address["original_address"], 100000000)
+          asset = api.issue_asset(asset_address["private"], asset_address["oap_address"], 1000)
+
+          puts "waiting asset to been issued"
+          begin
+            printf("|")
+            check_address = api.asset_address(asset["assetid"], asset_address["oap_address"])
+            sleep(1)
+          end while check_address["n_tx"] == 0
+
+          res = api.transfer_asset(asset["assetid"], asset_address["private"], asset_address_to["oap_address"], 100)
+          expect(res).to include("assetid")
+        end
+      end
+    end
+  end
 end
