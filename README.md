@@ -44,6 +44,11 @@ For more information check the API docs at:
 
 http://dev.blockcypher.com
 
+## Development
+
+- Copy `spec/config.yml.sample` to `spec/config.yml` and put your test API token
+- `rspec spec`
+
 ## Contributors
 
 Contributions from [CoinHako](http://www.coinhako.com) and [meXBT](https://mexbt.com)

@@ -5,7 +5,7 @@ module BlockCypher
   describe Api do
     let(:api) do
       BlockCypher::Api.new({
-        api_token: 'testtoken',
+        api_token: CONFIG[:api_token],
         currency: BlockCypher::BCY,
         network: BlockCypher::TEST_NET,
         version: BlockCypher::V1
