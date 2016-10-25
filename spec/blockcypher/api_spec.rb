@@ -74,14 +74,11 @@ module BlockCypher
         expect(forward_details["input_address"].length).to be(34) # Ok this isn't strictly true but..
       end
 
-      it 'allows creating a payment forward with a callback' do
-        forward_details = api.create_forwarding_address(address_1, callback_url: "http://test.com/foo")
-        expect(forward_details["callback_url"]).to eql("http://test.com/foo")
-        expect(forward_details["enable_confirmations"]).to be nil
-      end
-
-      it 'allows creating a payment forward with a callback and confirmation notifications enabled' do
-        forward_details = api.create_forwarding_address(address_1, callback_url: "http://test.com/foo", enable_confirmations: true)
+      it 'allows creating a payment forward with options' do
+        forward_details = api.create_forwarding_address(address_1, {
+          callback_url: "http://test.com/foo",
+          enable_confirmations: true,
+        })
         expect(forward_details["callback_url"]).to eql("http://test.com/foo")
         expect(forward_details["enable_confirmations"]).to be true
       end
