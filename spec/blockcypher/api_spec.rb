@@ -12,20 +12,20 @@ module BlockCypher
       })
     end
 
+    let(:addr1) { api.address_generate }
+    let(:addr2) { api.address_generate }
 		context '#address_generate' do
 			it 'should generate new addresses' do
-				$addr1 = api.address_generate
-				$addr2 = api.address_generate
-				expect($addr1["address"]).to be_a(String)
-				expect($addr2["address"]).to be_a(String)
+				expect(addr1["address"]).to be_a(String)
+				expect(addr2["address"]).to be_a(String)
 			end
 		end
 
-    let(:address_1) { $addr1["address"].to_s }
-    let(:address_1_private_key) { $addr1["private"].to_s }
+    let(:address_1) { addr1["address"].to_s }
+    let(:address_1_private_key) { addr1["private"].to_s }
 
-    let(:address_2) { $addr2["address"].to_s }
-    let(:address_2_private_key) { $addr2["private"].to_s }
+    let(:address_2) { addr2["address"].to_s }
+    let(:address_2_private_key) { addr2["private"].to_s }
 
 		context '#faucet' do
 			it 'should fund a bcy test address with the faucet' do
