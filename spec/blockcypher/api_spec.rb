@@ -78,9 +78,11 @@ module BlockCypher
         forward_details = api.create_forwarding_address(address_1, {
           callback_url: "http://test.com/foo",
           enable_confirmations: true,
+          mining_fees_satoshis: 20_000,
         })
         expect(forward_details["callback_url"]).to eql("http://test.com/foo")
         expect(forward_details["enable_confirmations"]).to be true
+        expect(forward_details["mining_fees_satoshis"]).to be 20_000
       end
 
       it 'is possible to use the alias create_payments_forwarding' do
