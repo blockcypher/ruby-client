@@ -1,0 +1,187 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:35:37 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '187'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "bf3f100f90443f6b6dcaa55420bbf8c232978108d8689074c96391a79704ce5b",
+          "public": "031574fb8e2b683bea793b95d0a8a38d69ecf9a06cd7f643454eb9d4d906fed021",
+          "address": "BxxtivRxGuCeH5WjwzzRB2iiBtNU3w2qzc",
+          "wif": "BujnhL4rRfLWZ518JKMgsKNUUHh2MHncJSesauoa1hqSWT1DdsA8"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:37 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:35:38 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '188'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "cf2bb04f64a634a8c5b672058e08e8adc961ae125df61e7b3f1d468b396d5688",
+          "public": "03efbdfe061ff6239dec460b0fd9351ef8950040b6208852adcd0a44e710b938ee",
+          "address": "Bv36KLaVDoa2zEFhrhb6L3MY8Q1wxei9Fk",
+          "wif": "BvGk5GXxxkU3pSk9gLfDNyQE27DdH4ePypZcg2QRbiaKttMieWBr"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:38 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/txs/new?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: '{"inputs":[{"addresses":["BxxtivRxGuCeH5WjwzzRB2iiBtNU3w2qzc"]}],"outputs":[{"addresses":["Bv36KLaVDoa2zEFhrhb6L3MY8Q1wxei9Fk"],"value":20000}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:35:39 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1217'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '187'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors": [
+            {
+              "error": "Unable to find a transaction to spend for address BxxtivRxGuCeH5WjwzzRB2iiBtNU3w2qzc."
+            },
+            {
+              "error": "Not enough funds in 0 inputs to pay for 1 outputs, missing -20000."
+            },
+            {
+              "error": "Not enough funds after fees in 0 inputs to pay for 1 outputs, missing -26200."
+            },
+            {
+              "error": "Error validating generated transaction: Transaction missing input or output."
+            }
+          ],
+          "tx": {
+            "block_height": -1,
+            "block_index": -1,
+            "hash": "0b01cf6dfd07f7fb1ddfd1c3082102b6b2c1dffc4f6ec0c4313cbea29e1e7446",
+            "addresses": [
+              "Bv36KLaVDoa2zEFhrhb6L3MY8Q1wxei9Fk"
+            ],
+            "total": 20000,
+            "fees": 0,
+            "size": 44,
+            "preference": "low",
+            "relayed_by": "49.147.26.15",
+            "received": "2016-10-25T06:35:39.722334707Z",
+            "ver": 1,
+            "lock_time": 0,
+            "double_spend": false,
+            "vin_sz": 0,
+            "vout_sz": 1,
+            "confirmations": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "value": 20000,
+                "script": "76a9141fece4093456039701d0574cbdcf61e17c91c71388ac",
+                "addresses": [
+                  "Bv36KLaVDoa2zEFhrhb6L3MY8Q1wxei9Fk"
+                ],
+                "script_type": "pay-to-pubkey-hash"
+              }
+            ]
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:39 GMT
+recorded_with: VCR 3.0.3

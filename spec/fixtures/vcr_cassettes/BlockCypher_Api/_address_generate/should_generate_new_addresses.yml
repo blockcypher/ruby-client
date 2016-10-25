@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:34:55 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '185'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "3ec42fb035d591cd252a30441c105d2d44b9ae51cf69c0fcfc0b771feaa01ddf",
+          "public": "0228287639157aa3f437c99aa25ca91fbecdd7246cd48e0c111998ec28179e5e3c",
+          "address": "C4n93JUZetFGG9pt4K56kcknHCm4r1Ek9k",
+          "wif": "BqS3J2y63KzB7p4YWTRXHAP8oU55XtQRwMdsC67ixBBMnLnUsRib"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:34:55 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:34:56 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '184'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "36ab071c346df251b5a0380e274103cccf208a43f7f8c6163f984ade033d7838",
+          "public": "02f665c1397cae5f82236af90eab78c686d63a41ff5906d92812c83d47474d6c98",
+          "address": "Btr8fDMAKwXHSZQyoEtyDeEa7dcq7QXbYo",
+          "wif": "BqAJFyyReBUaPnEaLzRKPUuAsNYbswP2rcWqoC2brnVDTCSs82eF"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:34:56 GMT
+recorded_with: VCR 3.0.3

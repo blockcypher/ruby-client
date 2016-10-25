@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module BlockCypher
 
-  describe Api do
+  describe Api, vcr: {record: :once} do
     let(:api) do
       BlockCypher::Api.new({
         api_token: CONFIG[:api_token],

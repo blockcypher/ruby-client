@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:35:33 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '196'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "b6725f5acfc23fcbe9c20bfe5823d697bbfbfa885149b7d6847f789b8ec36b43",
+          "public": "031ecaaedf71f50d2ce9206c518852847cc2a969b18d9dd97f3705a283c05f5a0c",
+          "address": "C2SJopG4bZm2kXtYFFoGVfXLrtXvnvdqQk",
+          "wif": "BuSgbP1hnPNFoB2ErWURBbu37gDtmsxBao9vb52xHFSw18qTGN4n"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:33 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/faucet?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: '{"address":"C2SJopG4bZm2kXtYFFoGVfXLrtXvnvdqQk","amount":100000}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:35:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '82'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '185'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "tx_ref": "16ae510fd385405f697954fc0a4f6964304176036857ea7fe6e1f297d3a7c286"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:35 GMT
+recorded_with: VCR 3.0.3
