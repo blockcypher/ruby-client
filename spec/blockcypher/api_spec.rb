@@ -1,4 +1,4 @@
-require 'blockcypher'
+require 'spec_helper'
 
 module BlockCypher
 
