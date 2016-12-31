@@ -12,14 +12,14 @@ module BlockCypher
       })
     end
 
-		context '#address_generate' do
-			it 'should generate new addresses' do
-				$addr1 = api.address_generate
-				$addr2 = api.address_generate
-				expect($addr1["address"]).to be_a(String)
-				expect($addr2["address"]).to be_a(String)
-			end
-		end
+    context '#address_generate' do
+      it 'should generate new addresses' do
+        $addr1 = api.address_generate
+        $addr2 = api.address_generate
+        expect($addr1["address"]).to be_a(String)
+        expect($addr2["address"]).to be_a(String)
+      end
+    end
 
     let(:address_1) { $addr1["address"].to_s }
     let(:address_1_private_key) { $addr1["private"].to_s }
@@ -27,12 +27,12 @@ module BlockCypher
     let(:address_2) { $addr2["address"].to_s }
     let(:address_2_private_key) { $addr2["private"].to_s }
 
-		context '#faucet' do
-			it 'should fund a bcy test address with the faucet' do
-				res = api.faucet(address_1, 100000)
-				expect(res["tx_ref"]).to be_a(String)
-			end
-		end
+    context '#faucet' do
+      it 'should fund a bcy test address with the faucet' do
+        res = api.faucet(address_1, 100000)
+        expect(res["tx_ref"]).to be_a(String)
+      end
+    end
 
     context '#transaction_new' do
       it 'should call the txs/new api' do
@@ -100,14 +100,14 @@ module BlockCypher
       end
     end
 
-		context '#delete_forwarding_address' do
-			it 'deletes all previously created forwarding addresses' do
-				forwarding_addresses = api.list_forwarding_addresses
-				forwarding_addresses.each{|x| api.delete_forwarding_address(x["id"])}
-				forwarding_addresses = api.list_forwarding_addresses
-				expect(forwarding_addresses.any? == false)
-			end
-		end
+    context '#delete_forwarding_address' do
+      it 'deletes all previously created forwarding addresses' do
+        forwarding_addresses = api.list_forwarding_addresses
+        forwarding_addresses.each{|x| api.delete_forwarding_address(x["id"])}
+        forwarding_addresses = api.list_forwarding_addresses
+        expect(forwarding_addresses.any? == false)
+      end
+    end
 
     describe '#endpoint_uri' do
       it 'should encode query into URI' do
