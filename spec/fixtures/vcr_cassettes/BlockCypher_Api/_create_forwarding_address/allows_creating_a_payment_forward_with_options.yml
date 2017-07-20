@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:46:13 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '123'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "2b7f65e2e228ac81e699c1bb1c2080cb254f782fe39a9d4420406af4ba6e6d13",
+          "public": "02d0f59c30f685b9057b533f51d67b5ac1209e9f2392d3a3266fa6924ec224f5c8",
+          "address": "C5jgwN4gjAh2FyGdjeFi739BvttoFFvtjw",
+          "wif": "BpnaraVw7KLb9mcLd2FRcBy64ce6DDega1uaFHFJtYMjZdSZW5JF"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:46:13 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/payments?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: '{"destination":"C5jgwN4gjAh2FyGdjeFi739BvttoFFvtjw","callback_url":"http://test.com/foo","enable_confirmations":true,"mining_fees_satoshis":20000}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:46:14 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '315'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '160'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id": "fe22b32c-bcf4-43a7-9b15-1d710bfeed1e",
+          "token": "<api_token>",
+          "destination": "C5jgwN4gjAh2FyGdjeFi739BvttoFFvtjw",
+          "input_address": "C9oBeTobGbwKPXiHUuLEYAYL1kc7KTXqyH",
+          "enable_confirmations": true,
+          "mining_fees_satoshis": 20000,
+          "callback_url": "http://test.com/foo"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:46:14 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:35:44 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '182'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "f29b1419cd0b3943ba595cdfb1e0c8ed666693997e1cf1097c906baeab927358",
+          "public": "03ea9a402647cced83b71ea92a96a5ffcf85ebfdc9e3e19fcf71d318f9408591bd",
+          "address": "C964NAK4Refx6XGoynP6wvF3RDE8d6AJzb",
+          "wif": "BwTdBkEPSpczgQyBxGGRJ6q5b94jLamSzELWj5WDnyPZUCJWD9KQ"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:45 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs/C964NAK4Refx6XGoynP6wvF3RDE8d6AJzb/balance?omitWalletAddresses=false&token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:35:46 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '181'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "C964NAK4Refx6XGoynP6wvF3RDE8d6AJzb",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:46 GMT
+recorded_with: VCR 3.0.3

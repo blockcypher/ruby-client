@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:08 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '346'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '179'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "7ac4a4899444c04253d731ad792e4c287e022d199560d14c638c4935cd8ae1ff",
+          "public": "023e05052f7c9ba4f341649237ebbe901bf9c5968b656239115c72ed15d743e860",
+          "oap_address": "1C1f946JkAnYYQUEr45YLjUDFB16nT4oR2j",
+          "original_address": "C1f946JkAnYYQUEr45YLjUDFB16nQAKtrh",
+          "wif": "BsSgAH7YPHMmWgryXLAnkUvJTLruvLQx7drWefhiiMTWqLCMRq3H"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:08 GMT
+recorded_with: VCR 3.0.3

@@ -287,11 +287,17 @@ module BlockCypher
     # Payments and Forwarding API
     ##################
 
-    def create_forwarding_address(destination, callback_url: nil, enable_confirmations: false)
+    def create_forwarding_address(
+      destination,
+      callback_url: nil,
+      enable_confirmations: false,
+      mining_fees_satoshis: nil
+    )
       payload = {
         destination: destination,
         callback_url: callback_url,
-        enable_confirmations: enable_confirmations
+        enable_confirmations: enable_confirmations,
+        mining_fees_satoshis: mining_fees_satoshis,
       }
       api_http_post('/payments', json_payload: payload)
     end

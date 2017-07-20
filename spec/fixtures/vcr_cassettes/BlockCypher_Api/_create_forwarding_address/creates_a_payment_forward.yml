@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:35:47 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '195'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "8b9e2e67691f746a67cbc5bc88af354825a3ec930f5e3109a1e3641e0c68225b",
+          "public": "03dc4b03f1be17602841febb2a5d22790273296ca46d596c71ff78253ac4fe132a",
+          "address": "C5YjzvfcXhCRfzPCNtHHJ2KKJ3bt9NgA1j",
+          "wif": "Bt1RsqAfSoZYHSt9NZnJf8vL5a6nPztkDxT2pYx8N9DMuCsvtr8R"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:48 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/payments?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: '{"destination":"C5YjzvfcXhCRfzPCNtHHJ2KKJ3bt9NgA1j","callback_url":null,"enable_confirmations":false}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:35:48 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '209'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '194'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id": "28947218-5742-42a3-afc8-085028220361",
+          "token": "<api_token>",
+          "destination": "C5YjzvfcXhCRfzPCNtHHJ2KKJ3bt9NgA1j",
+          "input_address": "CC9fcp6E8kDGjn3HcvHNbKaroq88yecqhE"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:49 GMT
+recorded_with: VCR 3.0.3

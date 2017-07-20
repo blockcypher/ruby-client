@@ -1,0 +1,1349 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:14 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '346'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '193'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "99c29b6b5747520393a0909b1f456bf3554f143d4a10746954c648754243e2cf",
+          "public": "0362ad182ac03e9066954541c03f0f8d690636cb0512e16970768f30388f5b91ac",
+          "oap_address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "original_address": "C2YtDp89Q5sgWC7t6YG16fPt472RydThBC",
+          "wif": "BtUvLkU99feNqycFjreLzU5LoiSCKA37e9fm5HGomof2Knp3vHDz"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:14 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:36:15 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '346'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '175'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "13aef44a99a64093d7b31e80118b94d3f59862f51fc8772b4cc8d7c5cf5e704f",
+          "public": "02aeddc171605fa302075648eefdefe0e23c8d15b4e96c6a034f7eeee6d126b399",
+          "oap_address": "1BwWYuiH9eAfea9RAstAnG7wT1pFWTzjXpD",
+          "original_address": "BwWYuiH9eAfea9RAstAnG7wT1pFWTw8BAt",
+          "wif": "BozHw75Ua9P5URwVi1SQaBz21cNz7DzGwfpERA9UE2yJ5NTbCQyT"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:15 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/faucet?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: '{"address":"C2YtDp89Q5sgWC7t6YG16fPt472RydThBC","amount":100000000}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:17 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '82'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '169'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "tx_ref": "204eb3489a0f469db1e79b821717081c19562f90b3cb90b8d459d03d5d30ebfe"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:17 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/issue?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: '{"from_private":"99c29b6b5747520393a0909b1f456bf3554f143d4a10746954c648754243e2cf","to_address":"1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ","amount":1000}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:18 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '392'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '168'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "ver": 1,
+          "assetid": "15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw",
+          "oap_meta": "",
+          "hash": "bc745e9001ff0cc4cbac30616df2a4b71436919fb91b687f9dd43dd04c52d9ea",
+          "received": "2016-10-25T06:36:18.366529246Z",
+          "double_spend": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+              "value": 1000,
+              "original_output_index": 0
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:18 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:36:19 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '169'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:19 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:22 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '178'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:22 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:24 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '177'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:25 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:36:27 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '168'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:27 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:29 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '176'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:30 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:32 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '157'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:32 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:34 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '167'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:34 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:36 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '175'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:37 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:39 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '174'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:39 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:36:41 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '167'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:41 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:43 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '173'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:43 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:46 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '172'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:46 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:49 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '166'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:49 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:52 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '156'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:52 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:36:55 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '166'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:55 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '146'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:58 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:37:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '165'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:37:00 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:37:02 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '145'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:37:02 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:37:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 0,
+          "total_sent": 0,
+          "balance": 0,
+          "unconfirmed_balance": 0,
+          "final_balance": 0,
+          "n_tx": 0,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 0,
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:37:05 GMT
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/addrs/1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:37:07 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '155'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+          "total_received": 1000,
+          "total_sent": 0,
+          "balance": 1000,
+          "unconfirmed_balance": 0,
+          "final_balance": 1000,
+          "n_tx": 1,
+          "unconfirmed_n_tx": 0,
+          "final_n_tx": 1,
+          "txrefs": [
+            {
+              "tx_hash": "bc745e9001ff0cc4cbac30616df2a4b71436919fb91b687f9dd43dd04c52d9ea",
+              "block_height": 1030276,
+              "tx_input_n": -1,
+              "tx_output_n": 0,
+              "value": 1000,
+              "ref_balance": 1000,
+              "spent": false,
+              "confirmations": 1,
+              "confirmed": "2016-10-25T06:37:06Z",
+              "double_spend": false
+            }
+          ],
+          "tx_url": "https://api.blockcypher.com/v1/bcy/test/txs/"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:37:07 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw/transfer?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: '{"from_private":"99c29b6b5747520393a0909b1f456bf3554f143d4a10746954c648754243e2cf","to_address":"1BwWYuiH9eAfea9RAstAnG7wT1pFWTzjXpD","amount":100}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:37:10 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '723'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '164'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "ver": 1,
+          "assetid": "15EMVQjPto24Rrq4YTeFhv1yADGzt7DSuw",
+          "oap_meta": "",
+          "hash": "8e3b6b88f061a9792c14cabd6d9f161daeba4461ecc648ea82b72af49febafa8",
+          "received": "2016-10-25T06:37:10.109238234Z",
+          "double_spend": false,
+          "inputs": [
+            {
+              "prev_hash": "bc745e9001ff0cc4cbac30616df2a4b71436919fb91b687f9dd43dd04c52d9ea",
+              "output_index": 0,
+              "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+              "output_value": 1000
+            }
+          ],
+          "outputs": [
+            {
+              "address": "1BwWYuiH9eAfea9RAstAnG7wT1pFWTzjXpD",
+              "value": 100,
+              "original_output_index": 1
+            },
+            {
+              "address": "1C2YtDp89Q5sgWC7t6YG16fPt472RvRe7TJ",
+              "value": 900,
+              "original_output_index": 2
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:37:10 GMT
+recorded_with: VCR 3.0.3

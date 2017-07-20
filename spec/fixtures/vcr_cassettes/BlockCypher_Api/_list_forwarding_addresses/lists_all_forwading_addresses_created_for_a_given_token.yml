@@ -1,0 +1,119 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.blockcypher.com/v1/bcy/test/payments?token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:35:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '179'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [
+          {
+            "id": "28947218-5742-42a3-afc8-085028220361",
+            "token": "<api_token>",
+            "destination": "C5YjzvfcXhCRfzPCNtHHJ2KKJ3bt9NgA1j",
+            "input_address": "CC9fcp6E8kDGjn3HcvHNbKaroq88yecqhE"
+          },
+          {
+            "id": "8e0103af-33c6-4262-9dfa-b29b3e2f6a2f",
+            "token": "<api_token>",
+            "destination": "Bsw87oXJeVuwz8VVbR9zQm1i9i39fmy8Pr",
+            "input_address": "C1nXb9WcayTNHaX5rAPjhxTrsfwGgAym7c"
+          },
+          {
+            "id": "94f44d55-8155-458d-b3b9-142084c1ad5e",
+            "token": "<api_token>",
+            "destination": "Bz1kdFmvRP3sxw3YTG1iz6Q1xvFSV3taLd",
+            "input_address": "CD3jhqqaS8QvaNG7aVzPUGuWbFhdHknRkR",
+            "callback_url": "http://test.com/foo"
+          },
+          {
+            "id": "97b0be31-75bf-457f-a3e8-4752250c00b9",
+            "token": "<api_token>",
+            "destination": "BsR3qRSngCXnyvQ2t4gE6TMPWWjPjFPmTt",
+            "input_address": "CAevgagGLaA5Qmgb7tQguZPyf2fSwVRAea",
+            "callback_url": "http://test.com/foo"
+          }
+        ]
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:35:59 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:00 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '190'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "79b2236ca43a95c5002ade6e787115a5ef2495625a353e857159b956631a83d6",
+          "public": "02ff5abdc7da47f6c1b51d377ea765c07c42da0f8b58916b4ccf9c65bd1f53b3df",
+          "address": "C6gPm4ECoXn7t1hbMfrf83SbauB21cGPkg",
+          "wif": "BsQbGS6VGL6yiV7cD5XdfN7yiPZTKF1fDqaAgUL8N5TT55fGhJQc"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:00 GMT
+recorded_with: VCR 3.0.3

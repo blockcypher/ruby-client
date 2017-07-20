@@ -1,31 +1,31 @@
-require 'blockcypher'
+require 'spec_helper'
 
 module BlockCypher
 
-  describe Api do
+  describe Api, vcr: {record: :once} do
     let(:api) do
       BlockCypher::Api.new({
-        api_token: 'testtoken',
+        api_token: CONFIG[:api_token],
         currency: BlockCypher::BCY,
         network: BlockCypher::TEST_NET,
         version: BlockCypher::V1
       })
     end
 
+    let(:addr1) { api.address_generate }
+    let(:addr2) { api.address_generate }
 		context '#address_generate' do
 			it 'should generate new addresses' do
-				$addr1 = api.address_generate
-				$addr2 = api.address_generate
-				expect($addr1["address"]).to be_a(String)
-				expect($addr2["address"]).to be_a(String)
+				expect(addr1["address"]).to be_a(String)
+				expect(addr2["address"]).to be_a(String)
 			end
 		end
 
-    let(:address_1) { $addr1["address"].to_s }
-    let(:address_1_private_key) { $addr1["private"].to_s }
+    let(:address_1) { addr1["address"].to_s }
+    let(:address_1_private_key) { addr1["private"].to_s }
 
-    let(:address_2) { $addr2["address"].to_s }
-    let(:address_2_private_key) { $addr2["private"].to_s }
+    let(:address_2) { addr2["address"].to_s }
+    let(:address_2_private_key) { addr2["private"].to_s }
 
 		context '#faucet' do
 			it 'should fund a bcy test address with the faucet' do
@@ -74,16 +74,15 @@ module BlockCypher
         expect(forward_details["input_address"].length).to be(34) # Ok this isn't strictly true but..
       end
 
-      it 'allows creating a payment forward with a callback' do
-        forward_details = api.create_forwarding_address(address_1, callback_url: "http://test.com/foo")
-        expect(forward_details["callback_url"]).to eql("http://test.com/foo")
-        expect(forward_details["enable_confirmations"]).to be nil
-      end
-
-      it 'allows creating a payment forward with a callback and confirmation notifications enabled' do
-        forward_details = api.create_forwarding_address(address_1, callback_url: "http://test.com/foo", enable_confirmations: true)
+      it 'allows creating a payment forward with options' do
+        forward_details = api.create_forwarding_address(address_1, {
+          callback_url: "http://test.com/foo",
+          enable_confirmations: true,
+          mining_fees_satoshis: 20_000,
+        })
         expect(forward_details["callback_url"]).to eql("http://test.com/foo")
         expect(forward_details["enable_confirmations"]).to be true
+        expect(forward_details["mining_fees_satoshis"]).to be 20_000
       end
 
       it 'is possible to use the alias create_payments_forwarding' do

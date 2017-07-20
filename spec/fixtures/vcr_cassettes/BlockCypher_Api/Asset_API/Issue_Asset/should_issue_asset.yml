@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/addrs?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:09 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '346'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '195'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "private": "c5b98c7a8c7bd1825410a58313e516d62326e9b4969e8d9ec09be955446c4907",
+          "public": "02f2c92c8f0925a2ef5eef62cfd19cf72d236d780755cc4aaf6dea63f195d70b2e",
+          "oap_address": "1C5cM5T8vXfe9SaJKWCgMrgTixnxZcmDb4y",
+          "original_address": "C5cM5T8vXfe9SaJKWCgMrgTixnxZYUKnT1",
+          "wif": "BuxP78R9erkyRXco5p1baiEZM3rEGqpury2oSSK9pXBgxxfyAurr"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:10 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/faucet?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: '{"address":"C5cM5T8vXfe9SaJKWCgMrgTixnxZYUKnT1","amount":1000000}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 25 Oct 2016 06:36:11 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '82'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '176'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "tx_ref": "b6e86704af5d31955370c5df3acdd5c8cd73a05ff934eb78aac03175e1c25a86"
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:11 GMT
+- request:
+    method: post
+    uri: https://api.blockcypher.com/v1/bcy/test/oap/issue?token=<api_token>
+    body:
+      encoding: UTF-8
+      string: '{"from_private":"c5b98c7a8c7bd1825410a58313e516d62326e9b4969e8d9ec09be955446c4907","to_address":"1C5cM5T8vXfe9SaJKWCgMrgTixnxZcmDb4y","amount":1000}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.9.12
+      Date:
+      - Tue, 25 Oct 2016 06:36:13 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '392'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Remaining:
+      - '194'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "ver": 1,
+          "assetid": "1EfiAViDcsVHJoabNnaSHGh7EogkAboW1b",
+          "oap_meta": "",
+          "hash": "a9ee3352e4c5f39b9a887740ddf5f2359096e1dbf84402b4f3652ce5c4aed96c",
+          "received": "2016-10-25T06:36:13.085784805Z",
+          "double_spend": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "address": "1C5cM5T8vXfe9SaJKWCgMrgTixnxZcmDb4y",
+              "value": 1000,
+              "original_output_index": 0
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 25 Oct 2016 06:36:13 GMT
+recorded_with: VCR 3.0.3
