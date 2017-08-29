@@ -108,6 +108,14 @@ module BlockCypher
 			end
 		end
 
+    context "#get_forwarding_address" do
+      it "returns the forwarding address details" do
+        forward_details = api.create_forwarding_address(address_1)
+        response = api.get_forwarding_address(forward_details["id"])
+        expect(response["destination"]).to eq address_1
+      end
+    end
+
     describe '#endpoint_uri' do
       it 'should encode query into URI' do
         uri = api.send(:endpoint_uri, '/path', { test: 42 }).to_s

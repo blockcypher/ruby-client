@@ -312,6 +312,10 @@ module BlockCypher
       api_http_delete("/payments/" + id)
     end
 
+    def get_forwarding_address(id)
+      api_http_get("/payments/" + id)
+    end
+
 
     #############
     # Asset API #
