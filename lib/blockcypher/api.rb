@@ -78,7 +78,7 @@ module BlockCypher
       transaction_sign_and_send(tx_new, private_key)
     end
 
-    def transaction_new(input_addreses, output_addresses, satoshi_amount)
+    def transaction_new(input_addreses, output_addresses, satoshi_amount, extra_payload = {})
       payload = {
         'inputs' => [
           {
@@ -92,7 +92,7 @@ module BlockCypher
           }
         ]
       }
-      api_http_post('/txs/new', json_payload: payload)
+      api_http_post('/txs/new', json_payload: extra_payload.merge(payload))
     end
 
     def transaction_sign_and_send(new_tx, private_key)
