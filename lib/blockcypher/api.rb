@@ -267,7 +267,7 @@ module BlockCypher
 
       api_http_post('/hooks', json_payload: payload)
     end
-	  
+
     def event_webhook_listall
       api_http_get('/hooks')
     end
