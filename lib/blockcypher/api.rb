@@ -5,7 +5,8 @@ module BlockCypher
   BTC = 'btc'
   LTC = 'ltc'
   DOGE = 'doge'
-  BCY= 'bcy'
+  BCY = 'bcy'
+  ETH = 'eth'
 
   MAIN_NET = 'main'
   TEST_NET = 'test'
