@@ -42,7 +42,7 @@ If you want to use BTC on the main net, which is normally what you want to do, i
 
 For more information check the API docs at:
 
-http://dev.blockcypher.com
+https://www.blockcypher.com/dev/bitcoin
 
 ## Development
 
