@@ -1,5 +1,6 @@
-module BlockCypher
+# frozen_string_literal: true
 
+module BlockCypher
   V1 = 'v1'
 
   BTC = 'btc'
@@ -13,8 +14,7 @@ module BlockCypher
   TEST_NET_3 = 'test3'
 
   class Api
-
-    class Error < RuntimeError ; end
+    class Error < RuntimeError; end
 
     attr_reader :api_token
 
@@ -59,7 +59,7 @@ module BlockCypher
     ##################
 
     def decode_hex(hex)
-      payload = { 'tx' => hex}
+      payload = { 'tx' => hex }
       api_http_post('/txs/decode', json_payload: payload)
     end
 
@@ -69,10 +69,7 @@ module BlockCypher
     end
 
     def send_money(from_address, to_address, satoshi_amount, private_key)
-
-      unless to_address.kind_of? Array
-        to_address = [to_address]
-      end
+      to_address = [to_address] unless to_address.is_a? Array
 
       tx_new = transaction_new([from_address], to_address, satoshi_amount)
 
@@ -115,13 +112,13 @@ module BlockCypher
       signatures = []
 
       tosign.each do |to_sign_hex|
-        to_sign_binary = [to_sign_hex].pack("H*")
+        to_sign_binary = [to_sign_hex].pack('H*')
         sig_binary = key.sign(to_sign_binary)
-        sig_hex = sig_binary.unpack("H*").first
+        sig_hex = sig_binary.unpack1('H*')
         signatures << sig_hex
       end
 
-      return signatures
+      signatures
     end
 
     def transaction_new_custom(payload)
@@ -175,23 +172,23 @@ module BlockCypher
     end
 
     def address_generate_multi(pubkeys, script_type)
-      payload = { 'pubkeys' => pubkeys, 'script_type' => script_type}
+      payload = { 'pubkeys' => pubkeys, 'script_type' => script_type }
       api_http_post('/addrs', json_payload: payload)
     end
 
     def address_details(address, unspent_only: false, limit: 50,
                         before: nil, after: nil, confirmations: nil,
-												omit_wallet_addresses: false, include_confidence:false)
+                        omit_wallet_addresses: false, include_confidence: false)
       query = {
         unspentOnly: unspent_only,
         limit: limit,
         omitWalletAddresses: omit_wallet_addresses,
-				includeConfidence: include_confidence
+        includeConfidence: include_confidence
       }
       query[:before] = before if before
-			query[:after] = after if after
+      query[:after] = after if after
 
-      api_http_get('/addrs/' + address, query: query )
+      api_http_get('/addrs/' + address, query: query)
     end
 
     def address_balance(address, omit_wallet_addresses: false)
@@ -206,12 +203,12 @@ module BlockCypher
     end
 
     def address_full_txs(address, limit: 10, before: nil, after: nil,
-												 include_hex: false, omit_wallet_addresses: false, include_confidence:false)
+                         include_hex: false, omit_wallet_addresses: false, include_confidence: false)
       query = {
         limit: limit,
         includeHex: include_hex,
         omitWalletAddresses: omit_wallet_addresses,
-				includeConfidence: include_confidence
+        includeConfidence: include_confidence
       }
       query[:before] = before if before
       query[:after] = after if after
@@ -224,7 +221,7 @@ module BlockCypher
     ##################
 
     def wallet_create(name, addresses)
-      payload = { 'name' => name, 'addresses' => Array(addresses)}
+      payload = { 'name' => name, 'addresses' => Array(addresses) }
       api_http_post('/wallets', json_payload: payload)
     end
 
@@ -244,8 +241,8 @@ module BlockCypher
     end
 
     def wallet_delete_addr(name, addresses)
-      addrjoin = addresses.join(";")
-      api_http_delete('/wallets/' + name + '/addresses', query: { address: addrjoin})
+      addrjoin = addresses.join(';')
+      api_http_delete('/wallets/' + name + '/addresses', query: { address: addrjoin })
     end
 
     def wallet_gen_addr(name)
@@ -263,7 +260,7 @@ module BlockCypher
     def event_webhook_subscribe(url, event, options = {})
       payload = {
         url: url,
-        event: event,
+        event: event
       }.merge(options)
 
       api_http_post('/hooks', json_payload: payload)
@@ -295,44 +292,43 @@ module BlockCypher
         destination: destination,
         callback_url: callback_url,
         enable_confirmations: enable_confirmations,
-        mining_fees_satoshis: mining_fees_satoshis,
+        mining_fees_satoshis: mining_fees_satoshis
       }
       api_http_post('/payments', json_payload: payload)
     end
 
-    alias :create_payments_forwarding :create_forwarding_address
+    alias create_payments_forwarding create_forwarding_address
 
     def list_forwarding_addresses
-      api_http_get("/payments")
+      api_http_get('/payments')
     end
 
     def delete_forwarding_address(id)
-      api_http_delete("/payments/" + id)
+      api_http_delete('/payments/' + id)
     end
-
 
     #############
     # Asset API #
     #############
 
     def generate_asset_address
-      api_http_post("/oap/addrs")
+      api_http_post('/oap/addrs')
     end
 
     def issue_asset(from_private, to_address, amount)
-      api_http_post("/oap/issue", json_payload: {
-        from_private: from_private,
-        to_address: to_address,
-        amount: amount
-      })
+      api_http_post('/oap/issue', json_payload: {
+                      from_private: from_private,
+                      to_address: to_address,
+                      amount: amount
+                    })
     end
 
     def transfer_asset(asset_id, from_private, to_address, amount)
       api_http_post("/oap/#{asset_id}/transfer", json_payload: {
-         from_private: from_private,
-         to_address: to_address,
-         amount: amount
-      })
+                      from_private: from_private,
+                      to_address: to_address,
+                      amount: amount
+                    })
     end
 
     def asset_txs(asset_id)
@@ -349,7 +345,7 @@ module BlockCypher
       uri = endpoint_uri(api_path, query)
 
       # Build the connection
-      http    = Net::HTTP.new(uri.host, uri.port)
+      http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
 
       # Build the Request
@@ -373,7 +369,7 @@ module BlockCypher
 
       # Detect errors/return 204 empty body
       if response_code >= 400
-        raise Error.new(uri.to_s + ' Response:' + response.body)
+        raise Error, uri.to_s + ' Response:' + response.body
       elsif response_code == 204
         return nil
       end
@@ -381,8 +377,8 @@ module BlockCypher
       # Process the response
       begin
         json_response = JSON.parse(response.body)
-        return json_response
-      rescue => e
+        json_response
+      rescue StandardError => e
         raise "Unable to parse JSON response #{e.inspect}, #{response.body}"
       end
     end
