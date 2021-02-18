@@ -29,7 +29,7 @@ $ git clone https://github.com/blockcypher/ruby-client.git
 $ cd ruby-client
 $ bundle
 $ gem build blockcypher-ruby.gemspec
-$ gem install blockcypher-ruby-0.2.5.gem
+$ gem install blockcypher-ruby-0.2.6.gem
 ```
 
 ## Initializing a client
