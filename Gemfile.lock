@@ -8,9 +8,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (5.0.0)
+    activesupport (5.2.4.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (~> 0.7)
+      i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
@@ -19,7 +19,7 @@ GEM
       ffi
       scrypt
     coderay (1.1.0)
-    concurrent-ruby (1.0.2)
+    concurrent-ruby (1.1.9)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
@@ -29,9 +29,10 @@ GEM
       ffi (>= 1.0.0)
       rake
     hashdiff (0.3.0)
-    i18n (0.7.0)
+    i18n (1.8.11)
+      concurrent-ruby (~> 1.0)
     method_source (0.8.2)
-    minitest (5.9.0)
+    minitest (5.15.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -54,8 +55,8 @@ GEM
     scrypt (3.0.7)
       ffi-compiler (>= 1.0, < 2.0)
     slop (3.6.0)
-    thread_safe (0.3.5)
-    tzinfo (1.2.2)
+    thread_safe (0.3.6)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     vcr (3.0.3)
     webmock (2.1.0)
