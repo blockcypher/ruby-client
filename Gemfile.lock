@@ -13,7 +13,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.4.0)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     bitcoin-ruby (0.0.20)
       eventmachine
       ffi
@@ -36,6 +37,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    public_suffix (4.0.6)
     rake (10.4.2)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
