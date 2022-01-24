@@ -1,2 +1,4 @@
 Gemfile.lock
 spec/config.yml
+vendor
+.bundle
